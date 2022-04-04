@@ -58,6 +58,7 @@ class Product {
     }
 
     public function __destruct() {
+        self::$itemnr--;
         echo "Destroying product\n";
     }
 
