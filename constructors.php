@@ -1,4 +1,5 @@
 <?php
+
 class Sofa {
     public static $instance_count = 0;
 
