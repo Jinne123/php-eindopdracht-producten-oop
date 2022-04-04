@@ -5,7 +5,7 @@ class Sofa {
     public $seats = 3;
     public $arms = 2;
 
-    public function __construct($args[]) {
+    public function __construct($args=[]) {
         $this->seats = $args[test];
         $this->arms = $args[help];
     }
