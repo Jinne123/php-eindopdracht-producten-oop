@@ -11,7 +11,7 @@ class Sofa {
     }
 }
 
-public function __destroy() {
+public function __destruct() {
     echo "Destroying sofa\n";
 }
 
