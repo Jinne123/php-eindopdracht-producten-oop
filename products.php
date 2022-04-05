@@ -2,13 +2,13 @@
 class Product {
     public static $instance_count = 0;
 
-    public static $itemnr = 1;
+    protected static $itemnr = 1;
     // public $itemnr;
-    public $name;
-    public $stock;
-    public $minimum_stock;
-    public $price;
-    public $active;
+    protected $name;
+    protected $stock = 0;
+    protected $minimum_stock;
+    protected $price;
+    protected $active;
 
     public function __construct($args=[]) {
         self::$itemnr++;
@@ -44,9 +44,9 @@ class Product {
     public function setName($name) {
         $this->name = $name;
     }
-    public function setStock($stock) {
-        $this->stock = $stock;
-    }
+    // public function setStock($stock) {
+    //     $this->stock = $stock;
+    // }
     public function setMinimumStock($minimum_stock) {
         $this->minimum_stock = $minimum_stock;
     }
@@ -56,14 +56,28 @@ class Product {
     public function setActive($active) {
         $this->active = $active;
     }
-
+    public function RaiseStock(int $amount) {
+        if($active == true){
+            $this->stock += $amount;
+        }
+    }
+    public function LowerStock(int $amount) {
+        if($this->stock - $amount >= $this->minimum_stock && $active == true){
+            $this->stock -= $amount;
+        }
+    }
     public function __destruct() {
         self::$itemnr--;
         echo "Destroying product\n";
     }
 
+    public function getTotalPrice() {
+        return $this->price * $this->stock;
+    }
+
     public function toString(){
-        echo "Name: " . $this->name . " Stock: " . $this->stock . " Minimum stock: " . $this->minimum_stock . " Price: " . $this->price . " Active: " . $this->active . "\n";
+        return "Name: " . $this->Name() . ", Stock: " . $this->Stock() . ", Minimum stock: " . $this->MinimumStock() . ", Price: " . $this->Price() . ", Active: " . $this->Active();
+        // echo "Name: " . $this->name . " Stock: " . $this->stock . " Minimum stock: " . $this->minimum_stock . " Price: " . $this->price . " Active: " . $this->active . "\n";
     }
 }
 
