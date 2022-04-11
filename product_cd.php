@@ -1,4 +1,6 @@
 <?php
+include 'products.php';
+
 
 class Cd extends Product{
     private $artist;
@@ -7,9 +9,9 @@ class Cd extends Product{
 
     public function __construct($args=[]) {
         parent::__construct($args);
-        $this->artist = $args[artist] ?? NULL;
-        $this->number_of_songs = $args[number_of_songs] ?? NULL;
-        $this->labels = $args[labels] ?? NULL;
+        $this->artist = $args['artist'] ?? NULL;
+        $this->number_of_songs = $args['number_of_songs'] ?? NULL;
+        $this->labels = $args['labels'] ?? NULL;
     }
     
     public function Artist() {
@@ -31,11 +33,19 @@ class Cd extends Product{
         $this->labels = $labels;
     }
     public function getTotalPrice() {
-        return $this->parent::getTotalPrice();
+        return parent::getTotalPrice();
     }
     public function toString() {
         return $this->parent::toString() . ", Artist: " . $this->Artist() . ", Number of songs: " . $this->NumberOfSongs() . ", Labels: " . $this->Labels();
     }
 }
+
+
+echo "<br> <br>";
+echo "cd: <br>";
+
+$test2 = new Cd(["name" => "The Beatles", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true, "artist" => "Beatles", "number_of_songs" => 10, "labels" => "Parlophone"]);
+echo "<br>" . $test2->NumberOfSongs();
+echo "<br>" . $test2->getTotalPrice();
 
 ?>

@@ -13,11 +13,11 @@ class Product {
     public function __construct($args=[]) {
         self::$itemnr++;
         // $this->itemnr = $args[itemnr] ?? NULL;
-        $this->name = $args[name] ?? NULL;
-        $this->stock = $args[stock] ?? NULL;
-        $this->minimum_stock = $args[minimum_stock] ?? NULL;
-        $this->price = $args[price] ?? NULL;
-        $this->active = $args[active] ?? NULL;
+        $this->name = $args['name'] ?? NULL;
+        $this->stock = $args['stock'] ?? 0;
+        $this->minimum_stock = $args['minimum_stock'] ?? 0;
+        $this->price = $args['price'] ?? 0;
+        $this->active = $args['active'] ?? false;
     }
 
     // public function ItemNr() {
@@ -62,13 +62,13 @@ class Product {
         }
     }
     public function LowerStock(int $amount) {
-        if($this->stock - $amount >= $this->minimum_stock && $this->$active == true){
+        if($this->stock - $amount >= $this->minimum_stock && $this->Active() == true){
             $this->stock -= $amount;
         }
     }
     public function __destruct() {
         self::$itemnr--;
-        echo "Destroying product\n";
+        echo "<br>Destroying product\n";
     }
 
     public function getTotalPrice() {
@@ -80,6 +80,31 @@ class Product {
         // echo "Name: " . $this->name . " Stock: " . $this->stock . " Minimum stock: " . $this->minimum_stock . " Price: " . $this->price . " Active: " . $this->active . "\n";
     }
 }
+
+
+echo "product: <br>";
+$test = new Product(["name" => "Test", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true]);
+$test->RaiseStock(5);
+$test->LowerStock(5);
+echo $test->toString();
+echo "<br>" . $test->getTotalPrice();
+echo "<br>" . $test->Name();
+echo "<br>" . $test->Stock();
+echo "<br>" . $test->MinimumStock();
+echo "<br>" . $test->Price();
+echo "<br>" . $test->Active();
+$test->setName("Test2");
+$test->RaiseStock(100);
+$test->setMinimumStock(5);
+$test->setPrice(15);
+$test->setActive(false);
+echo "<br>" . $test->toString();
+echo "<br>" . $test->getTotalPrice();
+echo "<br>" . $test->Name();
+echo "<br>" . $test->Stock();
+echo "<br>" . $test->MinimumStock();
+echo "<br>" . $test->Price();
+echo "<br>" . $test->Active();
 
 
 ?>

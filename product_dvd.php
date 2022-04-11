@@ -1,4 +1,6 @@
 <?php
+include 'products.php';
+
 class Dvd extends Product{
     private $duration_minutes;
     private $publication_year;
@@ -6,9 +8,9 @@ class Dvd extends Product{
 
     public function __construct($args=[]) {
         parent::__construct($args);
-        $this->duration_minutes = $args[duration_minutes] ?? NULL;
-        $this->publication_year = $args[publication_year] ?? NULL;
-        $this->movie_studio = $args[movie_studio] ?? NULL;
+        $this->duration_minutes = $args['duration_minutes'] ?? NULL;
+        $this->publication_year = $args['publication_year'] ?? NULL;
+        $this->movie_studio = $args['movie_studio'] ?? NULL;
     }
 
     public function DurationMinutes() {
@@ -30,7 +32,7 @@ class Dvd extends Product{
         $this->movie_studio = $movie_studio;
     }
     public function getTotalPrice() {
-        $total = $this->parent::getTotalPrice();
+        $total = parent::getTotalPrice();
         return $total * 1.05;
     }
 
@@ -44,6 +46,12 @@ class Dvd extends Product{
     }
 }
 
+
+echo "<br> <br>";
+echo "dvd: <br>";
+$test3 = new Dvd(["name" => "The Matrix", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true, "duration_minutes" => 150, "publication_year" => 1999, "movie_studio" => "Warner Bros."]);
+echo $test3->getduration();
+echo $test3->getTotalPrice();
 
 
 ?>
