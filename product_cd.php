@@ -11,7 +11,7 @@ class Cd extends Product{
         $this->number_of_songs = $args[number_of_songs] ?? NULL;
         $this->labels = $args[labels] ?? NULL;
     }
-
+    
     public function Artist() {
         return $this->artist;
     }
