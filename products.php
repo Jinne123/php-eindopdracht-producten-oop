@@ -57,12 +57,12 @@ class Product {
         $this->active = $active;
     }
     public function RaiseStock(int $amount) {
-        if($active == true){
+        if($this->active == true){
             $this->stock += $amount;
         }
     }
     public function LowerStock(int $amount) {
-        if($this->stock - $amount >= $this->minimum_stock && $active == true){
+        if($this->stock - $amount >= $this->minimum_stock && $this->$active == true){
             $this->stock -= $amount;
         }
     }
