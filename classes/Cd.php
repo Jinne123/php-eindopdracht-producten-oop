@@ -1,8 +1,5 @@
 <?php
-// spl_autoload_register(function ($class_name) {
-//     include 'classes/' . $class_name . '.php';
-// });
-include 'products.php';
+include_once 'Product.php';
 
 
 class Cd extends Product{
@@ -38,17 +35,17 @@ class Cd extends Product{
     public function getTotalPrice() {
         return parent::getTotalPrice();
     }
-    public function toString() {
-        return $this->parent::toString() . ", Artist: " . $this->Artist() . ", Number of songs: " . $this->NumberOfSongs() . ", Labels: " . $this->Labels();
+    public function __toString() {
+        return parent::__toString() . ", Artist: " . $this->Artist() . ", Number of songs: " . $this->NumberOfSongs() . ", Labels: " . $this->Labels();
     }
 }
 
 
-echo "<br> <br>";
-echo "cd: <br>";
+// echo "<br> <br>";
+// echo "cd: <br>";
 
-$test2 = new Cd(["name" => "The Beatles", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true, "artist" => "Beatles", "number_of_songs" => 10, "labels" => "Parlophone"]);
-echo "<br>" . $test2->NumberOfSongs();
-echo "<br>" . $test2->getTotalPrice();
+// $test2 = new Cd(["name" => "The Beatles", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true, "artist" => "Beatles", "number_of_songs" => 10, "labels" => "Parlophone"]);
+// echo "<br>" . $test2->NumberOfSongs();
+// echo "<br>" . $test2->getTotalPrice();
 
 ?>

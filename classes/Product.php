@@ -68,43 +68,43 @@ class Product {
     }
     public function __destruct() {
         self::$itemnr--;
-        echo "<br>Destroying product\n";
+        echo "<br>Destroying product\n<br>";
     }
 
     public function getTotalPrice() {
         return $this->price * $this->stock;
     }
 
-    public function toString(){
+    public function __toString(){
         return "Name: " . $this->Name() . ", Stock: " . $this->Stock() . ", Minimum stock: " . $this->MinimumStock() . ", Price: " . $this->Price() . ", Active: " . $this->Active();
         // echo "Name: " . $this->name . " Stock: " . $this->stock . " Minimum stock: " . $this->minimum_stock . " Price: " . $this->price . " Active: " . $this->active . "\n";
     }
 }
 
 
-echo "product: <br>";
-$test = new Product(["name" => "Test", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true]);
-$test->RaiseStock(5);
-$test->LowerStock(5);
-echo $test->toString();
-echo "<br>" . $test->getTotalPrice();
-echo "<br>" . $test->Name();
-echo "<br>" . $test->Stock();
-echo "<br>" . $test->MinimumStock();
-echo "<br>" . $test->Price();
-echo "<br>" . $test->Active();
-$test->setName("Test2");
-$test->RaiseStock(100);
-$test->setMinimumStock(5);
-$test->setPrice(15);
-$test->setActive(false);
-echo "<br>" . $test->toString();
-echo "<br>" . $test->getTotalPrice();
-echo "<br>" . $test->Name();
-echo "<br>" . $test->Stock();
-echo "<br>" . $test->MinimumStock();
-echo "<br>" . $test->Price();
-echo "<br>" . $test->Active();
+// echo "product: <br>";
+// $test = new Product(["name" => "Test", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true]);
+// $test->RaiseStock(5);
+// $test->LowerStock(5);
+// echo $test->toString();
+// echo "<br>" . $test->getTotalPrice();
+// echo "<br>" . $test->Name();
+// echo "<br>" . $test->Stock();
+// echo "<br>" . $test->MinimumStock();
+// echo "<br>" . $test->Price();
+// echo "<br>" . $test->Active();
+// $test->setName("Test2");
+// $test->RaiseStock(100);
+// $test->setMinimumStock(5);
+// $test->setPrice(15);
+// $test->setActive(false);
+// echo "<br>" . $test->toString();
+// echo "<br>" . $test->getTotalPrice();
+// echo "<br>" . $test->Name();
+// echo "<br>" . $test->Stock();
+// echo "<br>" . $test->MinimumStock();
+// echo "<br>" . $test->Price();
+// echo "<br>" . $test->Active();
 
 
 ?>

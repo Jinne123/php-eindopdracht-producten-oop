@@ -1,5 +1,5 @@
 <?php
-include 'products.php';
+include_once 'Product.php';
 
 class Dvd extends Product{
     private $duration_minutes;
@@ -41,17 +41,17 @@ class Dvd extends Product{
         $duration_minutes = $this->duration_minutes % 60;
         return $duration_hours . "h " . $duration_minutes . "m";
     }
-    public function toString(){
-        return $this->parent::toString() . ", Duration in minutes: " . $this->DurationMinutes() . ", Publication year: " . $this->PublicationYear() . ", Movie studio: " . $this->MovieStudio();
+    public function __toString(){
+        return parent::__toString() . ", Duration in minutes: " . $this->DurationMinutes() . ", Publication year: " . $this->PublicationYear() . ", Movie studio: " . $this->MovieStudio();
     }
 }
 
 
-echo "<br> <br>";
-echo "dvd: <br>";
-$test3 = new Dvd(["name" => "The Matrix", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true, "duration_minutes" => 150, "publication_year" => 1999, "movie_studio" => "Warner Bros."]);
-echo $test3->getduration();
-echo $test3->getTotalPrice();
+// echo "<br> <br>";
+// echo "dvd: <br>";
+// $test3 = new Dvd(["name" => "The Matrix", "stock" => 10, "minimum_stock" => 5, "price" => 10, "active" => true, "duration_minutes" => 150, "publication_year" => 1999, "movie_studio" => "Warner Bros."]);
+// echo $test3->getduration();
+// echo $test3->getTotalPrice();
 
 
 ?>
